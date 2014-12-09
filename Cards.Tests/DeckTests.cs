@@ -11,7 +11,7 @@ namespace Cards.Tests
         [Test]
         public void DeckShouldbeAnEnumerableOfCards()
         {
-            var deck = new Deck(new List<Card>{new Card(Rank.Ace, SuitType.Heart)});
+            var deck = new Deck(new List<ICard>{new Card(Rank.Ace, SuitType.Heart)});
             Assert.IsInstanceOf<IEnumerable<ICard>>(deck);
         }
 
@@ -24,7 +24,6 @@ namespace Cards.Tests
         [Test]
         public void DeckShouldThrowArgumentExceptionIfNoCards()
         {
-            Assert.Throws<ArgumentException>(() => new Deck(new List<Card>()));
-        }
+            Assert.Throws<ArgumentException>(() => new Deck(new List<ICard>()));}
     }
 }

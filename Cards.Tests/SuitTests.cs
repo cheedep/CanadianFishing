@@ -11,14 +11,14 @@ namespace Cards.Tests
         [Test]
         public void SuitShouldBeAnEnumerableOfCards()
         {
-            var suit = new Suit(new List<Card> { new Card(Rank.Ace, SuitType.Club) }, SuitType.Club);
+            var suit = new Suit(new List<ICard> { new Card(Rank.Ace, SuitType.Club) }, SuitType.Club);
             Assert.IsInstanceOf<IEnumerable<ICard>>(suit);
         }
 
         [Test]
         public void SuitShouldThrowIfSuitTypeIsSpecial()
         {
-            Assert.Throws<ArgumentException>(() => new Suit(new List<Card> { new Card(Rank.Ace, SuitType.Club) }, SuitType.Special));
+            Assert.Throws<ArgumentException>(() => new Suit(new List<ICard> { new Card(Rank.Ace, SuitType.Club) }, SuitType.Special));
         }
 
         [Test]
@@ -30,13 +30,13 @@ namespace Cards.Tests
         [Test]
         public void SuitShouldThrowIfCardsIsEmpty()
         {
-            Assert.Throws<ArgumentException>(() => new Suit(new List<Card>(), SuitType.Club));
+            Assert.Throws<ArgumentException>(() => new Suit(new List<ICard>(), SuitType.Club));
         }
 
         [Test]
         public void SuitShouldThrowIfAllCardsAreNotOfSuitType()
         {
-            Assert.Throws<ArgumentException>(() => new Suit(new List<Card> { new Card(Rank.Ace, SuitType.Club) }, SuitType.Heart));
+            Assert.Throws<ArgumentException>(() => new Suit(new List<ICard> { new Card(Rank.Ace, SuitType.Club) }, SuitType.Heart));
         }
     }
 }
